@@ -51,23 +51,10 @@ export class Particle{
 
     attract(){
       let force:Vector2D = {x:this.orgPos.x - this.pos.x,y:this.orgPos.y - this.pos.y}
-      //let force:Vector2D = {x:this.pos.x-this.orgPos.x , y: this.pos.y-this.orgPos.y}
       let d = Math.sqrt(Math.pow(force.x,2) + Math.pow(force.y,2))
 
       force.x /=d
       force.y /=d
-  
-
-    //   force.x *=15
-    //   force.y *=15
-
-    //   const strength = (1 * 100 * 1) / (d * d)
-
-    //   force.x *= strength
-    //   force.y *= strength
-
-    //   force.x *= 0.1
-    //   force.y *= 0.1
 
       let steer:Vector2D = {x:force.x - this.velocity.x , y:force.y - this.velocity.y}
       let distanceSteer = Math.sqrt(Math.pow(steer.x,2) + Math.pow(steer.y,2))
@@ -79,14 +66,6 @@ export class Particle{
 
       this.velocity.x += this.acceleration.x
       this.velocity.y += this.acceleration.y
-    //   this.velocity.x = Math.min(Math.max(this.velocity.x, 0.1), 0.2)
-    //   this.velocity.y = Math.min(Math.max(this.velocity.y, 0.1), 0.2)
-
-    //   this.pos.x += this.velocity.x 
-    //   this.pos.y += this.velocity.y
-
-    //   this.pos.x += force.x 
-    //   this.pos.y += force.y
 
       this.acceleration.x *= 0
       this.acceleration.y *= 0
@@ -99,8 +78,6 @@ export class Particle{
         this.ctx.fillStyle = color[this.colorIndex]
         this.ctx.arc(this.pos.x, this.pos.y, Math.abs(this.size), 0, 2 * Math.PI);
         this.ctx.fill();
-
-        // console.log('mouseDown',mouseDown)
 
         if(mouseDown){
            this.dirX = (this.orgPos.x - this.pos.x) * 0.06
@@ -115,18 +92,12 @@ export class Particle{
         this.pos.x += this.dirX
         this.pos.y += this.dirY
 
-        //this.size += this.curSize
-
         if(this.dirX <=0){
             this.pos.x += Math.random()*0.2
         }
 
         if(this.dirY <=0){
             this.pos.y += Math.random()*0.2
-        }
-
-        if(this.size > 10 || this.size <= 0){
-            this.curSize *= -1
         }
 
         if(this.pos.x >= this.ctx.canvas.width/3.0625 || this.pos.x <=0){
