@@ -6,6 +6,8 @@ import {Particle} from './Particle'
 let text = 'Accenture 2022'
 let mouseDown = false
 let particleCreated = false
+let mouseX = 0
+let mouseY = 0
 
 function App() {
   let particle:Particle[] = []
@@ -42,7 +44,7 @@ function App() {
             }
           }
         }
-        particle[i].draw(mouseDown)
+        particle[i].draw(mouseDown , mouseX,mouseY)
       }
     }
     requestAnimationFrame(animate)
@@ -123,12 +125,13 @@ function App() {
     windowSizer()
     window.addEventListener('resize', windowSizer)
     window.addEventListener('mousedown',() => {mouseDown = !mouseDown})
+    window.addEventListener('mousemove',(e) => {mouseX = e.clientX; mouseY = e.clientY })
 
     return () => {
       window.removeEventListener('resize', windowSizer) 
       window.removeEventListener('mousedown', () => {}) 
+      window.removeEventListener('mousemove', () => {}) 
     }
-
   }, [])
 
 return (

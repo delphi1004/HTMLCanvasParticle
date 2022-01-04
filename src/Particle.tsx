@@ -73,7 +73,7 @@ export class Particle{
       this.acceleration.y *= 0
     }
 
-    draw(mouseDown:boolean){
+    draw(mouseDown:boolean,mouseX:number,mouseY:number){
         this.ctx.beginPath();
         this.ctx.fillStyle = color[this.colorIndex]
         this.ctx.arc(this.pos.x, this.pos.y, Math.abs(this.size), 0, 2 * Math.PI);
@@ -83,11 +83,19 @@ export class Particle{
            this.dirX = (this.orgPos.x - this.pos.x) * 0.06
            this.dirY = (this.orgPos.y - this.pos.y) * 0.05
            this.dirSelected = true
+           let dx = this.orgPos.x - mouseX
+           let dy = this.orgPos.y - mouseY
+           let d = Math.sqrt(dx*dx+dy*dy)
+
+           if(d < 90){
+            this.dirX = Math.random() * (Math.random() > 0.5 ? 30:-30)
+            this.dirY = Math.random() * (Math.random() > 0.5 ? 30:-30)
+           }
         }else if( this.dirSelected){
             this.dirX = Math.random() * (Math.random() > 0.5 ? 1:-1)
             this.dirY = Math.random() * (Math.random() > 0.5 ? 1:-1)
             this.dirSelected = false
-            }
+        }
 
         this.pos.x += this.dirX
         this.pos.y += this.dirY
