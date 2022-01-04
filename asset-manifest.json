@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/HTMLCanvasParticle/static/css/main.6b3c1a37.chunk.css",
-    "main.js": "/HTMLCanvasParticle/static/js/main.e7cc4f79.chunk.js",
-    "main.js.map": "/HTMLCanvasParticle/static/js/main.e7cc4f79.chunk.js.map",
+    "main.js": "/HTMLCanvasParticle/static/js/main.97a07888.chunk.js",
+    "main.js.map": "/HTMLCanvasParticle/static/js/main.97a07888.chunk.js.map",
     "runtime-main.js": "/HTMLCanvasParticle/static/js/runtime-main.d135134f.js",
     "runtime-main.js.map": "/HTMLCanvasParticle/static/js/runtime-main.d135134f.js.map",
     "static/js/2.8319d861.chunk.js": "/HTMLCanvasParticle/static/js/2.8319d861.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d135134f.js",
     "static/js/2.8319d861.chunk.js",
     "static/css/main.6b3c1a37.chunk.css",
-    "static/js/main.e7cc4f79.chunk.js"
+    "static/js/main.97a07888.chunk.js"
   ]
 }
