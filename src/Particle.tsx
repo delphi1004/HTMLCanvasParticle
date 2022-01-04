@@ -23,11 +23,13 @@ export class Particle{
     hue:number
     dirSelected:boolean
     colorIndex:number
+    dpr:number
 
-    constructor(ctx:CanvasRenderingContext2D,x:number,y:number){
+    constructor(ctx:CanvasRenderingContext2D,x:number,y:number,dpr:number){
         this.ctx = ctx
+        this.dpr = dpr
         this.pos = {x:Math.random() * ctx.canvas.width,y:Math.random() * ctx.canvas.height}
-        this.orgPos = {x:x,y:y}
+        this.orgPos = {x:x*dpr,y:y}
    
         this.velocity = {x:Math.random(),y:Math.random()}
         this.acceleration = {x:0,y:0}
@@ -38,7 +40,7 @@ export class Particle{
 
         this.colorIndex = this.rand(0,color.length)
 
-        this.size = this.rand(1.1,1.2)
+        this.size = this.rand(3.5,4.2)
         this.curSize = 0.1
         this.dirX = this.rand(-2,2)
         this.dirY = this.rand(-2,2)
@@ -72,8 +74,6 @@ export class Particle{
     }
 
     draw(mouseDown:boolean){
-        this.attract()
-        
         this.ctx.beginPath();
         this.ctx.fillStyle = color[this.colorIndex]
         this.ctx.arc(this.pos.x, this.pos.y, Math.abs(this.size), 0, 2 * Math.PI);
@@ -100,11 +100,11 @@ export class Particle{
             this.pos.y += Math.random()*0.2
         }
 
-        if(this.pos.x >= this.ctx.canvas.width/3.0625 || this.pos.x <=0){
+        if(this.pos.x >= window.innerWidth || this.pos.x <=0){
             this.dirX *= -1
         }
 
-        if(this.pos.y >= this.ctx.canvas.height/3.0625 || this.pos.y <=0){
+        if(this.pos.y >= window.innerHeight || this.pos.y <=0){
             this.dirY *= -1
         }
     }

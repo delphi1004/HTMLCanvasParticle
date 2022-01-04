@@ -23,7 +23,6 @@ function App() {
       ctx.lineWidth = 0.5;
 
       for(let i=0;i<particle.length;i++){
-        particle[i].draw(mouseDown)
         if(!mouseDown){
           for(let j=i;j<particle.length;j++){
             let dx = particle[i].pos.x - particle[j].pos.x
@@ -32,7 +31,7 @@ function App() {
 
             if(d < 50){
               lineCount++
-              ctx.strokeStyle='rgba(255,255,255,0.2)'
+              ctx.strokeStyle='rgba(255,255,255,0.8)'
               ctx.beginPath();
               ctx.moveTo(particle[i].pos.x, particle[i].pos.y);
               ctx.lineTo( particle[j].pos.x,  particle[j].pos.y);
@@ -43,6 +42,7 @@ function App() {
             }
           }
         }
+        particle[i].draw(mouseDown)
       }
     }
     requestAnimationFrame(animate)
@@ -50,30 +50,30 @@ function App() {
 
   const createOffScreen = () =>{
     document.getElementById('canvas')?.remove()
-    const offscreenCanvas = document.createElement('canvas')
-    const context = offscreenCanvas.getContext('2d')
+    const offScreenCanvas = document.createElement('canvas')
+    const context = offScreenCanvas.getContext('2d')
     const dpr = window.devicePixelRatio || 1
     const wWidth = window.innerWidth
-    const wHeight = 55
-    offscreenCanvas!.width = wWidth * dpr
-    offscreenCanvas!.height = wHeight * dpr
-    offscreenCanvas!.style.width = wWidth+'px'
-    offscreenCanvas!.style.height = wHeight+'px'
+    const wHeight = 200
+    offScreenCanvas!.width = wWidth * dpr
+    offScreenCanvas!.height = wHeight * dpr
+    offScreenCanvas!.style.width = wWidth+'px'
+    offScreenCanvas!.style.height = wHeight+'px'
     context!.scale(dpr,dpr)
     context!.fillStyle = 'black'
-    context!.fillRect(0,0,offscreenCanvas.width,offscreenCanvas.height)
+    context!.fillRect(0,0,offScreenCanvas.width,offScreenCanvas.height)
     context!.fillStyle = 'white'
-    context!.font = "20px";
-    context!.fillText(text , 2,10)
+    context!.font = "12px Helvetica Neue";
+    context!.fillText(text , 2,15)
  
-    const pixel = context!.getImageData(0,0, offscreenCanvas.width, offscreenCanvas.height).data
+    const pixel = context!.getImageData(0,0, offScreenCanvas.width, offScreenCanvas.height).data
   
     let index = 0
     let position = []
     for(let i=0;i<pixel.length;i+=4){
       if(pixel[i] > 50){
-        const x = index % offscreenCanvas!.width
-        const y = index / offscreenCanvas!.width
+        const x = index % offScreenCanvas!.width
+        const y = index / offScreenCanvas!.width
         context!.fillStyle = 'red'
         context!.fillRect(x,y+20,1,1)
         position.push({x,y})
@@ -102,9 +102,10 @@ function App() {
       }
 
       particle = []
+  
       if(particle.length === 0){
         for(let i=0;i<position.length;i++){
-          particle.push(new Particle(ctx!, (position[i].x+xOffset)*3,position[i].y*3+wHeight/4))
+          particle.push(new Particle(ctx!, (position[i].x+xOffset),position[i].y*(dpr*5)+wHeight/4,(dpr*5)))
         }
         animate() 
       }
