@@ -88,8 +88,8 @@ export class Particle{
            let d = Math.sqrt(dx*dx+dy*dy)
 
            if(d < 90){
-            this.dirX = Math.random() * (Math.random() > 0.5 ? 5:-5)
-            this.dirY = Math.random() * (Math.random() > 0.5 ? 5:-5)
+            this.dirX = Math.random() * (Math.random() > 0.5 ? 15:-15)
+            this.dirY = Math.random() * (Math.random() > 0.5 ? 15:-15)
            }
         }else if( this.dirSelected){
             this.dirX = Math.random() * (Math.random() > 0.5 ? 1:-1)
