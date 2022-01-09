@@ -65,11 +65,13 @@ function App() {
     context!.fillStyle = 'black'
     context!.fillRect(0,0,offScreenCanvas.width,offScreenCanvas.height)
     context!.fillStyle = 'white'
-    context!.font = "12px Helvetica Neue";
+    context!.font = `${wWidth/160}px Roboto`;
     context!.fillText(text , 2,15)
  
     const pixel = context!.getImageData(0,0, offScreenCanvas.width, offScreenCanvas.height).data
-  
+
+    console.log(wWidth)
+
     let index = 0
     let position = []
     for(let i=0;i<pixel.length;i+=4){

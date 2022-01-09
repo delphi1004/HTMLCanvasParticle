@@ -40,7 +40,8 @@ export class Particle{
 
         this.colorIndex = this.rand(0,color.length)
 
-        this.size = this.rand(3.5,4.2)
+        const ratio =  ctx.canvas.width/980
+        this.size = this.rand(ratio,ratio+0.7)
         this.curSize = 0.1
         this.dirX = this.rand(-2,2)
         this.dirY = this.rand(-2,2)
@@ -87,9 +88,9 @@ export class Particle{
            let dy = this.orgPos.y - mouseY
            let d = Math.sqrt(dx*dx+dy*dy)
 
-           if(d < 90){
-            this.dirX = Math.random() * (Math.random() > 0.5 ? 15:-15)
-            this.dirY = Math.random() * (Math.random() > 0.5 ? 15:-15)
+           if(d < 100){
+            this.dirX = Math.random() * (Math.random() > 0.5 ? 25:-25)
+            this.dirY = Math.random() * (Math.random() > 0.5 ? 25:-25)
            }
         }else if( this.dirSelected){
             this.dirX = Math.random() * (Math.random() > 0.5 ? 1:-1)
