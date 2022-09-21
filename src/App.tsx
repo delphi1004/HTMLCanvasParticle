@@ -3,7 +3,7 @@ import {  useEffect, useRef } from 'react';
 import './App.css';
 import {Particle} from './Particle'
 
-let text = 'UTOPIA'
+let text = 'UTOPIA MUSIC'
 let mouseDown = false
 let particleCreated = false
 let mouseX = 0
