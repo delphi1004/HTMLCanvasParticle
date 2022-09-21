@@ -3,7 +3,7 @@ import {  useEffect, useRef } from 'react';
 import './App.css';
 import {Particle} from './Particle'
 
-let text = 'Accenture 2022'
+let text = 'UTOPIA'
 let mouseDown = false
 let particleCreated = false
 let mouseX = 0
@@ -69,8 +69,6 @@ function App() {
     context!.fillText(text , 2,15)
  
     const pixel = context!.getImageData(0,0, offScreenCanvas.width, offScreenCanvas.height).data
-
-    console.log(wWidth)
 
     let index = 0
     let position = []
