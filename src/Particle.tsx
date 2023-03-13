@@ -4,6 +4,11 @@ interface Vector2D {
     y:number
 } 
 
+export enum TEST {
+    value1,
+    value2,
+}
+
 //const color = ['hsl(214,53%,35%)','hsl(208,40%,55%)','hsl(11,59%,95%)','hsl(11,34%,65%)']
 //const color = ['hsl(207,94.8%,45.1%)','hsl(191,39.9%,76.9%)','hsl(203,50.2%,100%)','hsl(196,86.8%,84.7%)']
 const color = ['hsl(208,20%,65%)','hsl(39,19%,95%)','hsl(33,64%,95%)','hsl(22,80%,85%)','hsl(22,69%,55%)']
