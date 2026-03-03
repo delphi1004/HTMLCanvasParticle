@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import './App.css'
 import { Particle } from './Particle'
 
-let text = 'Great Apes'
+let text = 'Adventure Club'
 let mouseDown = false
 let particleCreated = false
 let mouseX = 0
@@ -107,7 +107,14 @@ function App() {
 
       if (particle.length === 0) {
         for (let i = 0; i < position.length; i++) {
-          particle.push(new Particle(ctx!, position[i].x + xOffset, position[i].y * (dpr * 5) + wHeight / 4, dpr * 5))
+          particle.push(
+            new Particle(
+              ctx!,
+              position[i].x + xOffset,
+              position[i].y * (dpr * 5) + wHeight / 4,
+              dpr * 5,
+            ),
+          )
         }
         animate()
       }
